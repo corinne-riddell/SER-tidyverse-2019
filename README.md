@@ -8,6 +8,6 @@ Recent developments by the R community have revolutionized the data analysis pip
 
 * 8:30-9:30: Data manipulation using dplyr (Malcolm)
 * 9:30-10:30: Data visualization using ggplot2 (Corinne)
-* 10:30-10:45: break
+* 10:30-10:45: Break
 * 10:45-11:45: Data visualization team exercise (Corinne and Malcolm)
 * 11:45-12:30: Reproducible reports and manuscripts using R markdown (Malcolm)
