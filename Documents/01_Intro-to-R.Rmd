@@ -20,12 +20,12 @@ ii) Download and install the free version of RStudio from https://www.rstudio.co
 iii) Open up RStudio and type the following lines of code into the console (bottom left window):
 
 ```{r, eval=F}
-install.packages("dplyr")
-install.packages("ggplot2")
+install.packages("tidyverse")
 ```
 
-This code installs the R packages named `dplyr` and `ggplot2`. These packages are
-libraries of functions that are used for data manipulation and data visualization.
+This code installs the R package named `tidyverse`. This packages is a package
+of packages! It includes the two that we highlight in detail today, `dplyr` and `ggplot2`. Each package
+is a library of functions that are used for data manipulation and data visualization.
 
 ### What is R?
 
