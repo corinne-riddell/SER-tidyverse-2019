@@ -20,12 +20,12 @@ ii) Download and install the free version of RStudio from https://www.rstudio.co
 iii) Open up RStudio and type the following lines of code into the console (bottom left window):
 
 ```{r, eval=F}
-install.packages("tidyverse")
+install.packages(c("tidyverse", "gapminder"))
 ```
 
-This code installs the R package named `tidyverse`. This packages is a package
+This code installs two R packages named `tidyverse` and `gapminder`. The `tidyverse` packages is a package
 of packages! It includes the two that we highlight in detail today, `dplyr` and `ggplot2`. Each package
-is a library of functions that are used for data manipulation and data visualization.
+is a library of functions that are used for data manipulation and data visualization. `gapminder` is not part of the Tidyverse but includes a data set we will be using.
 
 ### What is R?
 
