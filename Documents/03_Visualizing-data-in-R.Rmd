@@ -310,10 +310,10 @@ ggplot(dat = data_2013, aes(x = LE)) +
 ### We only skimmed the surface!
 
 - You know have a sense of how ggplot2 works, but you might be itching to learn more.
-- (Kieran Healy's data visualization book)[https://www.amazon.com/gp/product/0691181624/ref=as_li_tl?ie=UTF8&tag=kieranhealysw-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0691181624&linkId=16d53b3cc1ec3bc3aac60b27c29b92e8]
-- (RStudio ggplot2 cheatsheet)[https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf]
+    - [Kieran Healy's data visualization book](https://www.amazon.com/gp/product/0691181624/ref=as_li_tl?ie=UTF8&tag=kieranhealysw-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0691181624&linkId=16d53b3cc1ec3bc3aac60b27c29b92e8)
+    - [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
 ### Where to ask ggplot2 questions
 
-- (The RStudio community page)[https://community.rstudio.com/]
-- (Stack Overflow)[https://stackoverflow.com/]
+- [The RStudio community page](https://community.rstudio.com/)
+- [Stack Overflow](https://stackoverflow.com/)
