@@ -13,74 +13,96 @@ output: slidy_presentation
 ### Life expectancy in the United States by race and gender, 1969-2013 
 
 These data are partial results from a study that I did on the difference in life 
-expectancy between non-Hispanic black and white men and women in the United 
+expectancy between non-Hispanic Black and White men and women in the United 
 States over time. 
 
-A subset of the results have been stored in the Data/ folder as a csv file.
+A subset of the results have been stored in the Data/ folder as a CSV file.
 
-Do you remember which function to use to import csv data into R?
+Do you remember which function to use to import CSV data into R?
 
 ### `readr`'s `read_csv()` to import these data
 
 ```{r import-csv-data}
-library(readr)
+library(readr) #readr is part of the tidyverse
 le_data <- read_csv("../Data/Life-expectancy-by-state-long.csv")
 ```
 
-### Four functions to get to know your dataset
+### Five functions to get to know your dataset
 
 Function 1
 ```{r first-lines}
 head(le_data)
 ```
 
-### Four functions to get to know your dataset
+### Five functions to get to know your dataset
 
 Function 2
 ```{r dimensions}
 dim(le_data)
 ```
 
-### Four functions to get to know your dataset
+### Five functions to get to know your dataset
 
 Function 3
 ```{r names}
 names(le_data)
 ```
 
-### Four functions to get to know your dataset
+### Five functions to get to know your dataset
 
 Function 4
 ```{r structure}
 str(le_data)
 ```
 
-### Life expectancy for white males in California
+### Five functions to get to know your dataset
 
-Make a scatter plot of the life expectancy for white males in California
+Function 5
+```{r view, eval = F}
+View(le_data)
+```
+
+To RStudio!
+
+
+### Summary: Four functions to get to know your dataset
+
+1. `head()`: prints the first 6 lines of a data frame
+2. `dim()`: prints the # rows and # columns
+3. `names()`: prints the variable names
+4. `str()`: shows the type of each variable and some values
+5. `View()`: opens the viewer pane in RStudio
+
+### Life expectancy for White men in California
+
+Make a scatter plot of the life expectancy for White men in California
 over time.
 
 Since the dataset contains 39 states across two genders and two races, first use
-a function to subset the data to contain only white men in California.
+a function to subset the data to contain only White men in California.
 
 Which function from Malcolm's lesson do we need?
 
 ### `dplyr`'s `filter()` to select a subset of rows
 
-```{r wh-cali-dataset}
+```{r wh-cali-dataset, message=F}
 library(dplyr)
-wm_cali <- le_data %>% filter(state == "California", sex == "Male", 
+wm_cali <- le_data %>% filter(state == "California", 
+                              sex == "Male", 
                               race == "white")
+
+#this is equivalent:
+wm_cali <- le_data %>% filter(state == "California" & sex == "Male" & race == "white")
 ```
 
-### First step to building a `ggplot()`: set up the canvas
+### First step to building a `ggplot()`: set up a canvas
+
+- The line of code specified the `data` set and what goes on the `x` and `y` axes
 
 ```{r ggplot-canvas, fig.width=5.5, fig.height=4}
 library(ggplot2)
 ggplot(data = wm_cali, aes(x = year, y = LE))
 ```
-
-- The line of code specified the `data` set and what goes on the `x` and `y` axes
 
 ### Second step to building a `ggplot()`: tell `ggplot` how to plot the data
 
@@ -94,7 +116,7 @@ ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_point()
 
 ```{r ggplot-change-titles, fig.width=5.5, fig.height=4}
 ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_point() +
-  labs(title = "Life expectancy in white men in California, 1969-2013",
+  labs(title = "Life expectancy in White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
@@ -104,7 +126,7 @@ ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_point() +
 
 ```{r ggplot-change-col, fig.width=5.5, fig.height=4}
 ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_point(col = "blue") +
-  labs(title = "Life expectancy in white men in California, 1969-2013",
+  labs(title = "Life expectancy in White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
@@ -114,7 +136,7 @@ ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_point(col = "blue") +
 
 ```{r ggplot-change-col-size, fig.width=5.5, fig.height=4}
 ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_point(col = "blue", size = 4) +
-  labs(title = "Life expectancy in white men in California, 1969-2013",
+  labs(title = "Life expectancy in White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
@@ -128,7 +150,7 @@ code should change?
 ```{r ggplot-previous-code, fig.width=5.5, fig.height=4}
 ggplot(data = wm_cali, aes(x = year, y = LE)) + 
   geom_point(col = "blue", size = 4) +
-  labs(title = "Life expectancy in white men in California, 1969-2013",
+  labs(title = "Life expectancy in White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
@@ -138,15 +160,15 @@ ggplot(data = wm_cali, aes(x = year, y = LE)) +
 
 ```{r ggplot-geom_line, fig.width=5.5, fig.height=4}
 ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_line(col = "blue") +
-  labs(title = "Life expectancy in white males in California, 1969-2013",
+  labs(title = "Life expectancy in White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
 ```
 
-### Life expectancy for white and black men in California
+### Life expectancy for White and Black men in California
 
-What do we need to change to make a separate line for both black and white men?
+What do we need to change to make a separate line for both Black and White men?
 
 ### First, update the `filter()`
 
@@ -159,23 +181,49 @@ wbm_cali <- le_data %>% filter(state == "California",
 
 ```{r ggplot-geom_line-dup, fig.width=5.5, fig.height=4}
 ggplot(data = wm_cali, aes(x = year, y = LE)) + geom_line(col = "blue") +
-  labs(title = "Life expectancy in white men in California, 1969-2013",
+  labs(title = "Life expectancy in White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
 ```
 
-### And change it to **link** color to race
+### And change it to *link* color to race
+
 ```{r ggplot-geom_line-aes, fig.width=5.5, fig.height=4}
 ggplot(data = wbm_cali, aes(x = year, y = LE)) + geom_line(aes(col = race)) +
-  labs(title = "Life expectancy in black and white men in California, 1969-2013",
+  labs(title = "Life expectancy in Black and White men in California, 1969-2013",
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)")
 ```
+
+### Always use the aes() function to link a plot feature to a variable in your data frame
+
+The operative word is *link*. Whenever you want to link something about how 
+the plot looks to a variable in the data frame, you need to *link* these items
+inside the `aes()` function:
+
+```{r}
+ggplot(data = wbm_cali, aes(x = year, y = LE)) + geom_line(aes(col = race)) +
+  labs(title = "Life expectancy in Black and White men in California, 1969-2013",
+       y = "Life expectancy", 
+       x = "Year", 
+       caption = "Data from Riddell et al. (2018)")
+```
+
+### The `aes()` function
+
+* What else was added to the plot when you used the `aes()` function?
+
+### The `aes()` function
+
+* What else was added to the plot when you used the `aes()` function?
+    * A legend was added showing the link between the line color and the data 
+    frame's race variable
 
 ### What if we also wanted to look at women?
 
+### What if we also wanted to look at women?
 ```{r cali-dataset, fig.width=5.5, fig.height=4}
 cali_data <- le_data %>% filter(state == "California")
 ```
@@ -209,7 +257,7 @@ ggplot(data = cali_data, aes(x = year, y = LE)) +
        y = "Life expectancy", 
        x = "Year", 
        caption = "Data from Riddell et al. (2018)") +
-  facet_wrap(~ sex)
+  facet_wrap(~ sex) 
 ```
 
 ### Compare two states
@@ -240,6 +288,10 @@ ggplot(data = updated_data, aes(x = year, y = LE)) +
   facet_grid(state ~ sex)
 ```
 
+### Question
+
+What is the difference between `facet_wrap()` and `facet_grid()`?
+
 ### So far
 
 - `geom_point()` to make scatter plots
@@ -252,11 +304,12 @@ ggplot(data = updated_data, aes(x = year, y = LE)) +
 
 ### What if we wanted to make a histogram...
 
-...of life expectancy of white males in 2013?
+...of life expectancy of White men in 2013?
 
 Before you code, try and visualize what the histogram will show
 
-- What is on the x axis? What is on the y axis? 
+- What is on the x axis? 
+- What is on the y axis? 
 
 ### Update the `filter`
 
@@ -270,8 +323,8 @@ wm_data <- le_data %>% filter(year == 2013, sex == "Male", race == "white")
 ggplot(dat = wm_data, aes(x = LE)) + geom_histogram()
 ```
 
-### use `fill` to change the *fill* of the histogram and `binwidth` to specify 
-how the bin width 
+### use `fill` to change the *fill* of the histogram and `binwidth` to specify the bin width 
+
 
 ```{r ggplot_geom_histogram-bin-width, fig.width=5.5, fig.height=4}
 wm_data <- le_data %>% filter(year == 2013, sex == "Male", race == "white")
@@ -309,7 +362,7 @@ ggplot(dat = data_2013, aes(x = LE)) +
     
 ### We only skimmed the surface!
 
-- You know have a sense of how ggplot2 works, but you might be itching to learn more.
+- You now have a sense of how `ggplot` works, but you might be itching to learn more.
     - [Kieran Healy's data visualization book](https://www.amazon.com/gp/product/0691181624/ref=as_li_tl?ie=UTF8&tag=kieranhealysw-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0691181624&linkId=16d53b3cc1ec3bc3aac60b27c29b92e8)
     - [RStudio ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
@@ -317,3 +370,4 @@ ggplot(dat = data_2013, aes(x = LE)) +
 
 - [The RStudio community page](https://community.rstudio.com/)
 - [Stack Overflow](https://stackoverflow.com/)
+- On Twitter using the #rstats hashtag
