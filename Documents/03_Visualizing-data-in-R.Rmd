@@ -65,7 +65,7 @@ View(le_data)
 To RStudio!
 
 
-### Summary: Four functions to get to know your dataset
+### Summary: Five functions to get to know your dataset
 
 1. `head()`: prints the first 6 lines of a data frame
 2. `dim()`: prints the # rows and # columns
